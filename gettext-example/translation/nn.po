@@ -1,0 +1,33 @@
+# Norwegian Nynorsk translations for gettext-example package.
+# Copyright (C) 2013 THE gettext-example'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the gettext-example package.
+# Thomas Bakketun <thomas.bakketun@copyleft.no>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gettext-example\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-03-21 16:10+0100\n"
+"PO-Revision-Date: 2013-03-21 16:10+0100\n"
+"Last-Translator: Thomas Bakketun <thomas.bakketun@copyleft.no>\n"
+"Language-Team: Norwegian Nynorsk\n"
+"Language: nn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: example.lisp:11
+msgid "This is an example gettext program."
+msgstr "Dette er eit gettext eksempelprogram."
+
+#: example.lisp:12
+msgid "This text is not translated."
+msgstr ""
+
+#: example.lisp:14
+#, lisp-format
+msgid "I see one dog.~%"
+msgid_plural "I see ~D dogs.~%"
+msgstr[0] "Eg ser ein hund.~%"
+msgstr[1] "Eg ser ~D hundar.~%"
