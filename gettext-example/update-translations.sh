@@ -13,7 +13,7 @@ xgettext --package-name=$PACKAGE -c --from-code UTF-8 -k_ -kN_ -o translation/$P
 # the preload-catalog in order to get the updated texts.
 touch example.lisp
 
-# To create a new translation
+# To create a new translation (e.g. for the locale nn)
 # cd translation
 # msginit -l nn
 
