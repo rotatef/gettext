@@ -16,13 +16,13 @@ The easiest way is to use Quicklisp, see http://www.quicklisp.org/
 
 Get the sources from GitHub:
 
-  cd quicklisp/local-projects
-  git clone git://github.com/copyleft/gettext.git
-  ln -s gettext/gettext-example .
+    cd quicklisp/local-projects
+    git clone git://github.com/copyleft/gettext.git
+    ln -s gettext/gettext-example .
 
 Then load it:
 
-  (ql:quickload "gettext")
+    (ql:quickload "gettext")
 
 Eventually gettext will become part of quicklisp, and only the last
 step will be neccary (unless you need the latest version).
@@ -36,11 +36,11 @@ gettext-example.
 
 Add gettext as a dependency your system definition (gettext-example.asd):
 
-  :depends-on (:gettext)
+    :depends-on (:gettext)
 
 Setup gettext in your applications package (package.lisp):
 
-  (gettext:setup-gettext #:example "gettext-example")
+    (gettext:setup-gettext #:example "gettext-example")
 
 The first parameter is the name of the package. The second parameter
 is the textdomain. Textdomains are namespaces for the translated
@@ -49,7 +49,7 @@ the asdf system) will suffice.
 
 Load the translated messages (example.lisp):
 
-  (preload-catalogs #.(asdf:system-relative-pathname :gettext-example "locale/"))
+    (preload-catalogs #.(asdf:system-relative-pathname :gettext-example "locale/"))
 
 This macro takes a single parameter, the pathname of a directory tree
 containing translation catalogs in MO format. The texts are loaded at
@@ -59,7 +59,7 @@ MO files at runtime, see the section "Loading catalogs at runtime".
 
 Set the current locale by binding the special variable GETTEXT:*CURRENT-LOCALE*:
 
-  (setf *current-locale* :nn)
+    (setf *current-locale* :nn)
 
 Here the locale is hardcoded to :NN. In a real world application it
 would be set to the current users preferred language. If the
@@ -69,7 +69,7 @@ in users preferred language.
 
 Mark texts for translation, e.g.:
 
-  (write-line (_ "This is an example gettext program."))
+    (write-line (_ "This is an example gettext program."))
 
 Extract the texts for translations using the xgettext program from GNU
 gettext. This step will have to be repeated whenver the texts are
@@ -91,7 +91,7 @@ Loading catalogs at runtime
 Replace GETTEXT:PRELOAD-CATALOGS with a SETF of the place
 GETTEXT:TEXTDOMAINDIR:
 
-  (setf (textdomaindir "gettext-example") (asdf:system-relative-pathname :gettext-example "locale/"))
+    (setf (textdomaindir "gettext-example") (asdf:system-relative-pathname :gettext-example "locale/"))
 
 The catalogs will be loaded as needed and cached until the
 appliciatons quits.
@@ -104,8 +104,8 @@ threading - suited for multiuser web applications
 translation can be embedded into compiled file
 
 getting
-  quicklisp
-  local-projects
+quicklisp
+local-projects
 
 not implemented pgettext (contexts)
 
