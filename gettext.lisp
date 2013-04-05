@@ -144,7 +144,7 @@
   (let ((key (list (or locale *current-locale*)
                    (or category :lc_messages)
                    (or domain (textdomain)))))
-    (when domain
+    (when (and locale domain)
       (multiple-value-bind (catalog found)
           (gethash key *catalog-cache*)
         (if found
