@@ -1,7 +1,13 @@
 gettext for Common Lisp
 =======================
 
-This is a port of GNU gettext runtime to Common Lisp.
+This is a port of GNU gettext runtime to Common Lisp. For more
+information about GNU gettext see
+http://www.gnu.org/software/gettext/.
+
+
+Highlights
+----------
 
 * Implemented in Common Lisp. No need for any C libraries.
 * Use GNU gettext tools during development.
@@ -28,15 +34,22 @@ Eventually gettext will become part of quicklisp, and only the last
 step will be neccary (unless you need the latest version).
 
 
-Quick introduction
-------------------
+How to use
+----------
 
-gettext comes with a small sample application located in the directory
-gettext-example.
+This library reimplements only the runtime part of GNU gettext in
+Common Lisp. In order to successfully use this library you need to
+install GNU gettext tools. No GNU gettext tools or library are needed
+at runtime.
+
+The easiest way to get started is to look at the sample application
+located in the subdirectory gettext-example.
 
 Add gettext as a dependency your system definition (gettext-example.asd):
 
     :depends-on (:gettext)
+
+Add the GETTEXT package to the use list of you applications package.
 
 Setup gettext in your applications package (package.lisp):
 
@@ -96,8 +109,31 @@ GETTEXT:TEXTDOMAINDIR:
 The catalogs will be loaded as needed and cached until the
 appliciatons quits.
 
+Concepts
+--------
 
-http://www.gnu.org/software/gettext
+**Catalog**: A set of translated text for one language in one textdomain in one category.
+
+**Locale category**: Translated texts are grouped into categories. The
+default category is :LC_MESSAGES. Just uhttp://www.gnu.org/software/gettext/manual/gettext.html#Aspects
+
+
+Reference
+---------
+
+GETTEXT:*CURRENT-LOCALE*
+
+The current
+
+#:gettext*
+   #:ngettext*
+   #:gettext-noop
+   #:textdomain
+   #:textdomaindir
+   #:lc-category
+   #:preload-catalogs
+   #:setup-gettext
+
 
 threading - suited for multiuser web applications
 
