@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gettext-example\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-21 16:10+0100\n"
+"POT-Creation-Date: 2013-04-09 16:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: example.lisp:11
+#: example.lisp:9
 msgid "This is an example gettext program."
 msgstr ""
 
-#: example.lisp:12
+#: example.lisp:10
 msgid "This text is not translated."
 msgstr ""
 
-#: example.lisp:14
+#: example.lisp:12
 #, lisp-format
 msgid "I see one dog.~%"
 msgid_plural "I see ~D dogs.~%"

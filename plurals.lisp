@@ -69,12 +69,16 @@
                  (progn (read-char stream)
                         (values '!= '!=))
                  (values '! '!)))
-            ((#\& #\|)
-             (if (next-is c)
-                 (let ((v (intern (string c) #.*package*)))
-                   (read-char stream)
-                   (values v v))
-                 (error "Syntax error: ~S" (read-char stream))))
+            (#\&
+             (cond ((next-is #\&)
+                    (read-char stream)
+                    (values '&& '&&))
+                   (t (error "Syntax error: ~S" (read-char stream)))))
+            (#\|
+             (cond ((next-is #\|)
+                    (read-char stream)
+                    (values '\|\| '\|\|))
+                   (t (error "Syntax error: ~S" (read-char stream)))))
             (#\<
              (if (next-is #\=)
                  (progn (read-char stream)
@@ -96,14 +100,14 @@
 (yacc:define-parser *plural-expression-parser*
   (:start-symbol expression)
   (:terminals (? \: \|\| && == != < > <= >= + - = * / % ! int n |(| |)|))
-  (:precedence ((:right ? \:)
-                (:left \|\|)
-                (:left &&)
-                (:left == !=)
-                (:left < > <= >=)
-                (:left + -)
+  (:precedence ((:right !)
                 (:left * / %)
-                (:right !)))
+                (:left + -)
+                (:left < > <= >=)
+                (:left == !=)
+                (:left &&)
+                (:left \|\|)
+                (:right ? \:)))
   (expression
    (expression \|\| expression #'op2)
    (expression && expression #'op2)
@@ -161,3 +165,10 @@
 
 ;(funcall (compile nil `(lambda (n) ,(compile-plural (parse-plural "n != 1"))))
 ;         1)
+
+
+;(funcall
+; (compile-plural
+;  (parse-plural "(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)")
+;  )
+; 4)
