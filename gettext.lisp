@@ -57,14 +57,14 @@
 (defun catalog-pathname (key)
   (destructuring-bind (locale category domain)
       key
-    (check-type locale keyword)
+    (check-type locale string)
     (check-type category lc-category)
     (check-type domain string)
     (let ((basedir (gethash domain *textdomaindirs*)))
       (when basedir
         (probe-file
          (merge-pathnames
-          (make-pathname :directory `(:relative ,(string-downcase locale) ,(symbol-name category))
+          (make-pathname :directory `(:relative ,locale ,(symbol-name category))
                          :name domain
                          :type "mo")
           basedir))))))
@@ -74,7 +74,7 @@
   (assert (<= 3 (length (pathname-directory pathname))) ()
           "The pathname ~S has to few directory components to be a valid catalog pathname."
           pathname)
-  (list (intern (string-upcase (car (last (pathname-directory pathname) 2))) :keyword)
+  (list (car (last (pathname-directory pathname) 2))
         (intern (car (last (pathname-directory pathname))) :keyword)
         (pathname-name pathname)))
 
@@ -161,7 +161,7 @@
   (let ((key (list (or locale *current-locale*)
                    (or category :lc_messages)
                    (or domain (textdomain)))))
-    (when (and locale domain)
+    (unless (find nil key)
       (multiple-value-bind (catalog found)
           (gethash key *catalog-cache*)
         (if found

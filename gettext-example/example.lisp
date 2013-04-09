@@ -5,7 +5,7 @@
 
 (preload-catalogs #.(asdf:system-relative-pathname :gettext-example "locale/"))
 
-(setf *current-locale* :nn)
+(setf *current-locale* "nn")
 
 (defun run ()
   (write-line (_ "This is an example gettext program."))
