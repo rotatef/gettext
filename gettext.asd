@@ -18,7 +18,7 @@
 (defsystem #:gettext
     :name "A port of gettext runtime to Common Lisp"
     :licence "GNU Lesser General Public Licence 3.0"
-    :depends-on (:split-sequence :yacc)
+    :depends-on (:split-sequence :yacc :flexi-streams)
     :serial t
     :components ((:file "packages")
                  (:file "plurals-0")

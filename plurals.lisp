@@ -26,7 +26,7 @@
                   ;; First get the number
                   (incf nplurals 9)
                   (loop while (< nplurals (length string))
-                        while (member (char string nplurals) '(#\Formfeed #\Newline #\Return #\Tab #\Vt))
+                        while (member (char string nplurals) '(#\Page #\Newline #\Return #\Tab #\Vt))
                         do (incf nplurals))
                   (when (char<= #\0 (char string nplurals) #\9)
                     (setf pluralsp (ignore-errors (parse-integer string :start nplurals :junk-allowed t)))
