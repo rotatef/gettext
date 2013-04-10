@@ -158,9 +158,9 @@
     (let ((pathname (catalog-pathname key)))
       (when pathname
         (setf messages (read-mo pathname)))))
-  (when messages
     (setf (gethash key *catalog-cache*)
-          (construct-catalog key messages))))
+          (when messages
+            (construct-catalog key messages))))
 
 (defmacro preload-catalogs (textdomaindir)
   (check-type textdomaindir pathname)
