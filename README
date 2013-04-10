@@ -209,8 +209,5 @@ The pgettext function of GNU gettext is not implemented. Implementing
 this should be fairly stright forward, but apparently the xgettool
 doesn't support this function when extracting texts form Lisp code.
 
-Works only with SBCL. sb-ext:octects-to-string in read-mo, and other
-problems.
-
 Encoding in MO files is hardcoded to UTF-8. Is this really a problem?
 Is there really a good reason for using anything else these days?
