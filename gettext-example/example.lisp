@@ -12,6 +12,7 @@
     (format t (ngettext "I see one dog.~%" "I see ~D dogs.~%" i) i)))
 
 (defun run ()
+  (print-texts)
   (dolist (*current-locale* '("nn" "pl"))
     (format t "~&~%*current-locale* = ~A~%" *current-locale*)
     (print-texts)))

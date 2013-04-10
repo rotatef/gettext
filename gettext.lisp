@@ -172,7 +172,7 @@
   (let ((key (list (or locale *current-locale*)
                    (or category :lc_messages)
                    (or domain (textdomain)))))
-    (unless (find nil key)
+    (unless (member nil key)
       (multiple-value-bind (catalog found)
           (gethash key *catalog-cache*)
         (if found
