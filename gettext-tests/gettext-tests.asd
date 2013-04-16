@@ -15,21 +15,10 @@
 ;;;;  You should have received a copy of the GNU General Public License
 ;;;;  along with this library.  If not, see <http://www.gnu.org/licenses/>.
 
-(in-package #:example)
-
-;(setf (textdomaindir "gettext-example") (asdf:system-relative-pathname :gettext-example "locale/"))
-;(setf (textdomain) "gettext-example")
-
-(preload-catalogs #.(asdf:system-relative-pathname :gettext-example "locale/"))
-
-(defun print-texts ()
-  (write-line (_ "This is an example gettext program."))
-  (write-line (_ "This text is not translated."))
-  (dotimes (i 33)
-    (format t (ngettext "I see one dog.~%" "I see ~D dogs.~%" i) i)))
-
-(defun run ()
-  (print-texts)
-  (dolist (*current-locale* '("en" "nn" "pl"))
-    (format t "~&~%*current-locale* = ~A~%" *current-locale*)
-    (print-texts)))
+(defsystem #:gettext-tests
+    :name "gettext-tests"
+    :licence "GNU Lesser General Public Licence 3.0"
+    :depends-on (:gettext :stefil)
+    :serial t
+    :components ((:file "package")
+                 (:file "tests")))

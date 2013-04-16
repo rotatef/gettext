@@ -24,3 +24,8 @@
                  (:file "plurals-0")
                  (:file "plurals")
 		 (:file "gettext")))
+
+(defmethod perform ((o test-op) (c (eql (find-system '#:gettext))))
+  (operate 'load-op '#:gettext-tests)
+  (funcall (find-symbol (string :gettext-tests)
+                        :gettext-tests)))

@@ -38,7 +38,7 @@
       ;; for `one', the plural form otherwise.  Yes, this is also what
       ;; English is using since English is a Germanic language.
       (setf pluralsp 2
-            npluralsp :todo))
+            npluralsp "(n != 1)"))
     (values pluralsp npluralsp)))
 
 (defun digitp (c) (member c '(#\1 #\2 #\3 #\4 #\5 #\6 #\7 #\8 #\9 #\0)))
@@ -137,7 +137,9 @@
 
 (defun transform (expr)
   `(lambda (n)
+     (declare (ignorable n))
      (flet ((nz (x) (if (member x '(0 nil)) 0 1)))
+       (declare (ignorable (function nz)))
        (macrolet ((? (test (then else))
                     `(if (plusp (nz ,test)) ,then ,else)))
          ,(sublis '((\|\| . (lambda (x y) (nz (or (plusp (nz x)) (plusp (nz y))))))
