@@ -11,7 +11,7 @@ Highlights
 * Implemented in Common Lisp. No need for any C libraries.
 * Use GNU gettext tools during development.
 * Supports multithreaded applications with different langauge in each thread.
-* Transalations can be embedded into compiled application.
+* Translations can be embedded into compiled applications.
 
 
 Download and installation
