@@ -16,8 +16,10 @@
 ;;;;  along with this library.  If not, see <http://www.gnu.org/licenses/>.
 
 (defsystem #:gettext
-    :name "A port of gettext runtime to Common Lisp"
+    :name "gettext"
+    :description "A port of gettext runtime to Common Lisp"
     :licence "GNU Lesser General Public Licence 3.0"
+    :author "Thomas Bakketun <thomas.bakketun@copyleft.no>"
     :depends-on (:split-sequence :yacc :flexi-streams)
     :serial t
     :components ((:file "packages")
