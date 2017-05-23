@@ -17,7 +17,7 @@
 
 (defsystem #:gettext
     :name "gettext"
-    :description "A port of gettext runtime to Common Lisp"
+    :description "An pure Common Lisp implementation of gettext runtime. gettext is an internationalization and localization (i18n) system commonly used for writing multilingual programs on Unix-like computer operating systems."
     :licence "GNU Lesser General Public Licence 3.0"
     :author "Thomas Bakketun <thomas.bakketun@copyleft.no>"
     :depends-on (:split-sequence :yacc :flexi-streams)
