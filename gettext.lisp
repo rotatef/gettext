@@ -189,9 +189,10 @@
       msgid))
 
 (defun ngettext* (msgid1 msgid2 n &optional domain category locale)
-  (let ((catalog (get-catalog locale category domain)))
-    (if catalog
-        (elt (lookup msgid1 domain category locale)
+  (let* ((catalog (get-catalog locale category domain))
+         (translation (and catalog (lookup msgid1 domain category locale))))
+    (if translation
+        (elt translation
              (funcall (catalog-plurals-function catalog) n))
         (if (= 1 n)
             msgid1
