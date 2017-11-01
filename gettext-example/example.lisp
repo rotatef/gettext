@@ -32,4 +32,5 @@
   (print-texts)
   (dolist (*current-locale* '("en" "nn" "pl"))
     (format t "~&~%*current-locale* = ~A~%" *current-locale*)
-    (print-texts)))
+    (print-texts)
+    (format t "~&Metadata:~%~S" (catalog-meta))))

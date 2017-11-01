@@ -203,6 +203,13 @@ L:LC_ADDRESS, :LC_ALL, :LC_COLLATE, :LC_CTYPE, :LC_IDENTIFICATION,
 :LC_PAPER, :LC_TELEPHONE and :LC_TIME.
 
 
+Function
+GETTEXT:CATALOG-META* &optional domain category locale
+
+Returns meta data about catalog as an assoc list. See
+https://www.gnu.org/software/gettext/manual/gettext.html#Header-Entry
+
+
 TODO
 ----
 

@@ -132,7 +132,7 @@
           while line
           for split = (position #\: line)
           collect (cons (intern (string-upcase (subseq line 0 split)) :keyword)
-                        (subseq line (1+ split))))))
+                        (string-trim " " (subseq line (1+ split)))))))
 
 (defstruct catalog
   key
@@ -145,6 +145,7 @@
 
 (defun construct-catalog (key messages)
   (let ((headers (parse-headers (first (gethash "" messages)))))
+    (remhash "" messages)
     (multiple-value-bind (nplurals plural-expr)
         (parse-plurals-form (cdr (assoc :plural-forms headers)))
       (make-catalog :key key
@@ -179,6 +180,11 @@
             catalog
             (define-catalog key))))))
 
+(defun catalog-meta* (&optional domain catergory locale)
+  (let ((catalog (get-catalog locale catergory domain)))
+    (when catalog
+      (catalog-headers catalog))))
+
 (defun lookup (msgid domain category locale)
   (let ((catalog (get-catalog locale category domain)))
     (when catalog
@@ -212,4 +218,6 @@
      (defun ,(intern "NGETTEXT" package) (msgid1 msgid2 n &optional domain category locale)
        (ngettext* msgid1 msgid2 n (or domain ,default-domain) category locale))
      (defun ,(intern "N_" package) (msgid)
-       msgid)))
+       msgid)
+     (defun ,(intern "CATALOG-META" package) (&optional domain category locale)
+       (catalog-meta* (or domain ,default-domain) category locale))))

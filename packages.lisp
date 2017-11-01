@@ -26,5 +26,6 @@
    #:lc-category
    #:preload-catalogs
    #:setup-gettext
-   #:*current-locale*))
+   #:*current-locale*
+   #:catalog-meta*))
 
